@@ -63,7 +63,7 @@ class AlwaysPositive implements Calculatrice {
     }
 }
 
-calc = new AlwaysPositive (new DoublingDecorator(new LoggingDecorator(new DefaultCalculatrice())))
+Calulatrice calc = new AlwaysPositive (new DoublingDecorator (new LoggingDecorator (new DefaultCalculatrice ())))
 
 println calc.add (2, 3)
 

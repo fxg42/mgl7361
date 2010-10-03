@@ -17,6 +17,10 @@ class DefaultCalculatrice implements Calculatrice {
 class XmlRpcProxyCalculatrice implements Calculatrice {
     def target
     
+    XmlRpcProxyCalculatrice (target) {
+        this.target = target
+    }
+    
     def add (lhs, rhs) {
         parseResponse (target.post (buildCall ('add', lhs, rhs)))
     }
@@ -43,6 +47,10 @@ class XmlRpcProxyCalculatrice implements Calculatrice {
 class XmlRpcCalculatriceExporter {
     def target
     
+    XmlRpcCalculatriceExporter (target) {
+        this.target = target
+    }
+    
     String post (xml) {
         def methodCall = new XmlSlurper().parseText(xml)
         def methodName = methodCall.methodName
@@ -66,9 +74,7 @@ class XmlRpcCalculatriceExporter {
     }
 }
 
-impl = new DefaultCalculatrice()
-service = new XmlRpcCalculatriceExporter(target: impl)
-calc = new XmlRpcProxyCalculatrice(target: service)
+Calculatrice calc = new XmlRpcProxyCalculatrice (new XmlRpcCalculatriceExporter (new DefaultCalculatrice ()))
 
 println calc.add(2, 3)
 println calc.substract(2, 3)

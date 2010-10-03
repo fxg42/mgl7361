@@ -97,12 +97,12 @@ class Shot extends BoissonDecorator {
     }
 }
 
-americano = new Eau (new Espresso ())
-caffeLatte = new Lait (new Espresso ())
-cafeViennois = new CremeFouettee (new Espresso ())
-capuccino = new Mousse (new Lait (new Espresso ()))
-redEye = new Shot (new CafeFiltre ())
-redEyeViennois = new CremeFouettee (redEye)
+Boisson americano = new Eau (new Espresso ())
+Boisson caffeLatte = new Lait (new Espresso ())
+Boisson cafeViennois = new CremeFouettee (new Espresso ())
+Boisson capuccino = new Mousse (new Lait (new Espresso ()))
+Boisson redEye = new Shot (new CafeFiltre ())
+Boisson redEyeViennois = new CremeFouettee (redEye)
 
 println americano
 println caffeLatte

@@ -8,8 +8,9 @@ class Ventilateur {
     }
     def tirerChainette () {
         state = state.nextState()
+        println "[crick!]"
     }
-    String toString () {
+    String getDescription () {
         state.getDescription(this)
     }
 }
@@ -53,10 +54,10 @@ class High extends VitesseState {
 }
 
 v = new Ventilateur("salon")
-println v
+println v.getDescription()
 
 5.times {
     v.tirerChainette()
-    println v    
+    println v.getDescription()
 }
 
