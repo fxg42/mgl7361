@@ -7,9 +7,9 @@ body {
   width: 180px;
 }
 #control-panel span {
-  float:left;
-  height:120px;
-  margin:10px;
+  float: left;
+  height: 120px;
+  margin: 10px;
 }
 #pie-chart {
   float: left;

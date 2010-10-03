@@ -1,3 +1,4 @@
+/*global $*/
 $(function () {
     
     var model = (function () {
@@ -28,15 +29,7 @@ $(function () {
                     return data;
                 }
             }
-        }
-    }());
-    
-    var controller = (function () {
-        return {
-            val: function (name, val) {
-                model.data(name, val);
-            }
-        }
+        };
     }());
     
     $('#pie-chart')
