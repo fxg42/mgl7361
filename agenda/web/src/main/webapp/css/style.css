@@ -1,0 +1,302 @@
+body {
+  font: 0.9em 'Lucida Grande';
+  margin: 5px;
+  color: black;
+}
+.btn {
+  -moz-border-radius: 4px;
+  -moz-box-shadow: 0 1px rgba(255, 255, 255, 0.4), 0 20px 20px -10px white inset;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  font-size: 0.9em;
+  margin:0 3px;
+  padding: 2px 6px;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+  cursor: default;
+}
+.btn.selected {
+  -moz-box-shadow: 0 -5px 12px rgba(0, 0, 0, 0.4) inset, 0 1px 3px #000000 inset, 0 1px rgba(255, 255, 255, 0.4);
+  background: none repeat scroll 0 0 #636363;
+  color: #FFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+}
+.btn:active {
+  -moz-box-shadow: 0 -5px 12px rgba(0, 0, 0, 0.4) inset, 0 1px 3px #000000 inset, 0 1px rgba(255, 255, 255, 0.4);
+  background: none repeat scroll 0 0 #B5B5B5;
+  text-shadow: none;
+}
+#app {
+  -moz-border-radius: 4px;
+  background-color: #DCDCDC;
+  width: 1000px;
+  margin: 0 auto;
+  -moz-box-shadow: 0 0 50px 3px #2D2C2E;
+}
+#header {
+  position: relative;
+  top: 1px;
+  height: 52px;
+  background: -moz-linear-gradient(#C5C5C5, #969696);
+  border-bottom: 1px solid #404040;
+  -moz-border-radius: 4px 4px 0 0;
+}
+#today-btn {
+  position: absolute;
+  left: 5px;
+}
+#prev-btn {
+  width: 13px;
+  margin: 0;
+  border-right: none;
+  -moz-border-radius: 4px 0 0 4px;
+  font-family: sans-serif;
+  padding-top: 3px;
+}
+.period-btn {
+  width: 50px;
+  text-align: center;
+  margin: 0;
+  -moz-border-radius: 0;
+  border-right: none;
+}
+#next-btn {
+  width: 13px;
+  margin: 0;
+  -moz-border-radius: 0 4px 4px 0;
+  font-family: sans-serif;
+  padding-top: 3px;
+}
+#header-title {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85em;
+  height: 22px;
+  line-height: 22px;
+}
+#content {
+  height: 600px;
+  border-bottom: 1px solid #404040;
+}
+#calendars {
+  float: left;
+  width: 178px;
+  height: 600px;
+  background-color: #D4DDE5;
+  border-right: 1px solid #A5A5A5;
+}
+#calendar-list {
+  height: 417px;
+}
+#calendar-list-title {
+  width: 100%;
+  text-transform: uppercase;
+  color: #5D6E81;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+  font: bold 0.77em 'Lucida Grande';
+  padding: 8px 0 0 16px;
+}
+.calendar-list-item {
+  font-size: 0.75em;
+  height: 19px;
+  line-height: 19px;
+  padding-left: 18px;
+}
+.calendar-list-item.selected {
+  background: -moz-linear-gradient(#5C93D6, #1553A9);
+  border-top: 1px solid #4589C8;
+  color: #FFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+}
+#datepicker-border-top {
+  border: 1px solid #A5A5A5;
+  border-width: 1px 0 1px 0;
+  height: 8px;
+  background: -moz-linear-gradient(#FCFCFC, #DFDFDF);
+}
+#datepickers {
+}
+#datepickers .ui-widget {
+  font-size: 0.9em;
+  font-family: 'Helvetica';
+}
+#datepickers .ui-widget-header {
+  background: none;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  color: #535353;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+  text-transform: lowercase;
+}
+#datepickers th {
+  padding: 0;
+}
+#datepickers span[title] {
+  font-size: 0.7em;
+  color: #535353;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+}
+#datepickers .ui-widget-content {
+  background: none;
+  border: none;
+}
+#datepickers .ui-datepicker {
+  padding: 0;
+  width: 100%;
+}
+#datepickers .ui-datepicker tbody tr {
+  border-top: 1px solid #AABACB;
+}
+#datepickers .ui-datepicker td {
+  border-left: 1px solid #AABACB;
+  vertical-align: middle;
+  padding: 0;
+}
+#datepickers .ui-datepicker td:first {
+  border-left: none;
+}
+#datepickers .ui-datepicker td a {
+  text-align: center;
+  background: none;
+  color: inherit;
+  border: 1px solid #FFF;
+  border-width: 1px 0 0 1px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #535353;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+}
+#events {
+  float: left;
+  background-color: #FFF;
+  height: 600px;
+  width: 619px;
+}
+#events-title {
+  height: 50px;
+  width: 100%;
+}
+#events-title-border-bottom {
+  height: 2px;
+  border: 1px solid #A5A5A5;
+  border-width: 1px 0 1px 0;
+  background: -moz-linear-gradient(#FCFCFC, #DFDFDF);
+}
+.event-title-col, .event-title-col-year, .event-title-col-last {
+  text-align: center;
+  float: left;
+  width: 78px;
+  height: 100%;
+  background-color: #FFF;
+}
+.event-title-col-year {
+  width: 50px;
+}
+.event-title-col {
+  border-left: 1px solid #CCC;
+}
+.event-title-col-last {
+  width: 1px;
+  border-left: 1px solid #CCC;
+}
+.day-name {
+  font: 0.7em/25px 'Lucida Grande';
+  height: 25px;
+  border-bottom: 1px solid #CCC;
+}
+.all-day-event {
+  height: 50%;
+}
+#event-planner {
+  height: 546px;
+  width: 619px;
+  overflow-y: scroll;
+}
+.time-col {
+  float: left;
+  width: 50px;
+  background-color: #FFF;
+}
+.time-desc {
+  font: 0.65em 'Lucida Grande';
+  color: #848493;
+  height: 51px;
+}
+.time-desc span {
+  position: relative;
+  left: 16px;
+  top: -7px;
+}
+.day-col {
+  float: left;
+  width: 79px;
+  background-color: #FFF;
+  height: 1200px;
+}
+.hour {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #C1C1C1;
+  background-color: #FFF;
+  border-width: 0 0 1px 1px;
+}
+.half-hour {
+  width: 100%;
+  height: 25px;
+  border-bottom: 1px solid #D9D9D9;
+}
+.event {
+  position: relative;
+  float: left;
+  width: 78px;
+  left: -1px;
+  top: -1px;
+  background-color: rgba(255, 116, 0, 0.3);
+  border: 1px solid #FF7400;
+  color: #FF7400;
+  font: 0.7em 'Lucida Grande';
+  -moz-border-radius: 6px;
+}
+.event.selected {
+  background: -moz-linear-gradient(left, #FF7F00, #FFA346);
+  color: #FFF;
+  -moz-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.6);
+}
+.event-start-time {
+  background-color: none;
+  color: inherit;
+  -moz-border-radius: 3px 3px 0 0;
+  padding: 2px 2px 0 2px;
+}
+.event.selected .event-start-time {
+  background-color: #FF7400;
+  color: #FFF;
+}
+.event-desc {
+  padding: 2px 2px 0 2px;
+}
+#tasks {
+  float: right;
+  background-color: #FFF;
+  border-left: 1px solid #A5A5A5;
+  height: 600px;
+  width: 200px;
+}
+#tasks-title {
+  height: 16px;
+  line-height: 16px;
+  background: -moz-linear-gradient(#FFFFFF, #E0E0E0, #FFFFFF);
+  font-size: 0.75em;
+  text-align: center;
+  border-bottom: 1px solid #A5A5A5;
+  vertical-align: middle;
+}
+#footer {
+  position: relative;
+  top: 1px;
+  height: 33px;
+  background: -moz-linear-gradient(#BEBEBE, #969696);
+  border-top: 1px solid #B9B9B9;
+  -moz-border-radius: 0 0 4px 4px;
+}

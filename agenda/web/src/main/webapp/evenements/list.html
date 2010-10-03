@@ -1,0 +1,8 @@
+import ca.uqam.mgl7361.*
+
+session = session ?: request.getSession(true)
+render = (new Renderer(servletContext: context)).&render
+
+println render ('/WEB-INF/evenements/list.gsp', [
+    evenements: session.agenda.findAllEvenements()
+])

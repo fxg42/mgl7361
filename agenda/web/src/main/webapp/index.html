@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Agenda</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="js/application.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="header">
+      <div id="header-title">iCal</div>
+      <div id="header-btns" style="text-align: center;">
+        <div id="today-btn" class="btn">Aujourd&#x27;hui</div>
+        <div id="header-btn-group">
+          <div id="prev-btn" class="btn">&#x25C4;</div><div class="period-btn btn">jour</div><div class="selected period-btn btn">semaine</div><div class="period-btn btn">mois</div><div id="next-btn" class="btn">&#x25BA;</div></div>
+      </div>
+    </div>
+    <div id="content">
+      <div id="calendars">
+        <div id="calendar-list">
+          <div id="calendar-list-title">calendriers</div>
+          <div class="calendar-list-item"><input type="checkbox">&nbsp;UQÀM</div>
+          <div class="calendar-list-item selected"><input type="checkbox">&nbsp;Travail</div>
+          <div class="calendar-list-item"><input type="checkbox">&nbsp;Personnel</div>
+        </div>
+        <div id="datepickers">
+          <div id="datepicker-border-top"></div>
+          <div id="datepicker"></div>
+        </div>
+      </div>
+      <div id="events">
+        <div id="events-title">
+          <div class="event-title-col-year"><div class="day-name">2010</div><div>&nbsp;</div></div>
+          <div class="event-title-col"><div class="day-name">dim.</div><div class="all-day-event">&nbsp;</div></div>
+          <div class="event-title-col"><div class="day-name">lun.</div><div class="all-day-event">&nbsp;</div></div>
+          <div class="event-title-col"><div class="day-name">mar.</div><div class="all-day-event">&nbsp;</div></div>
+          <div class="event-title-col"><div class="day-name">mer.</div><div class="all-day-event">&nbsp;</div></div>
+          <div class="event-title-col"><div class="day-name">jeu.</div><div class="all-day-event">&nbsp;</div></div>
+          <div class="event-title-col"><div class="day-name">ven.</div><div class="all-day-event">&nbsp;</div></div>
+          <div class="event-title-col" style="width: 79px"><div class="day-name">sam.</div><div class="all-day-event">&nbsp;</div></div>
+          <div class="event-title-col-last"></div>
+        </div>
+        <div id="events-title-border-bottom"></div>
+        <div id="event-planner">
+          <div class="time-col">
+            <div class="time-desc"><span>&nbsp;</span></div>
+            <div class="time-desc"><span>01:00</span></div>
+            <div class="time-desc"><span>02:00</span></div>
+            <div class="time-desc"><span>03:00</span></div>
+            <div class="time-desc"><span>04:00</span></div>
+            <div class="time-desc"><span>05:00</span></div>
+            <div class="time-desc"><span>06:00</span></div>
+            <div class="time-desc"><span>07:00</span></div>
+            <div class="time-desc"><span>08:00</span></div>
+            <div class="time-desc"><span>09:00</span></div>
+            <div class="time-desc"><span>10:00</span></div>
+            <div class="time-desc"><span>11:00</span></div>
+            <div class="time-desc"><span>12:00</span></div>
+            <div class="time-desc"><span>13:00</span></div>
+            <div class="time-desc"><span>14:00</span></div>
+            <div class="time-desc"><span>15:00</span></div>
+            <div class="time-desc"><span>16:00</span></div>
+            <div class="time-desc"><span>17:00</span></div>
+            <div class="time-desc"><span>18:00</span></div>
+            <div class="time-desc"><span>19:00</span></div>
+            <div class="time-desc"><span>20:00</span></div>
+            <div class="time-desc"><span>21:00</span></div>
+            <div class="time-desc"><span>22:00</span></div>
+            <div class="time-desc"><span>23:00</span></div>
+          </div>
+          <div id="dim" class="day-col">
+            <div class="hour hh0"><div class="half-hour"></div></div>
+            <div class="hour h1"><div class="half-hour"></div></div>
+            <div class="hour h2"><div class="half-hour"></div></div>
+            <div class="hour h3"><div class="half-hour"></div></div>
+            <div class="hour h4"><div class="half-hour"></div></div>
+            <div class="hour h5"><div class="half-hour"></div></div>
+            <div class="hour h6"><div class="half-hour"></div></div>
+            <div class="hour h7"><div class="half-hour"></div></div>
+            <div class="hour h8"><div class="half-hour"></div></div>
+            <div class="hour h9"><div class="half-hour"></div></div>
+            <div class="hour h10"><div class="half-hour"></div></div>
+            <div class="hour h11"><div class="half-hour"></div></div>
+            <div class="hour h12"><div class="half-hour"></div></div>
+            <div class="hour h13"><div class="half-hour"></div></div>
+            <div class="hour h14"><div class="half-hour"></div></div>
+            <div class="hour h15"><div class="half-hour"></div></div>
+            <div class="hour h16"><div class="half-hour"></div></div>
+            <div class="hour h17"><div class="half-hour"></div></div>
+            <div class="hour h18"><div class="half-hour"></div></div>
+            <div class="hour h19"><div class="half-hour"></div></div>
+            <div class="hour h20"><div class="half-hour"></div></div>
+            <div class="hour h21"><div class="half-hour"></div></div>
+            <div class="hour h22"><div class="half-hour"></div></div>
+            <div class="hour h23"><div class="half-hour"></div></div>
+          </div>
+          <div id="lun" class="day-col">
+            <div class="hour h0"><div class="half-hour"></div></div>
+            <div class="hour h1"><div class="half-hour"></div></div>
+            <div class="hour h2"><div class="half-hour"></div></div>
+            <div class="hour h3"><div class="half-hour"></div></div>
+            <div class="hour h4"><div class="half-hour"></div></div>
+            <div class="hour h5"><div class="half-hour"></div></div>
+            <div class="hour h6"><div class="half-hour"></div></div>
+            <div class="hour h7"><div class="half-hour"></div></div>
+            <div class="hour h8"><div class="half-hour"></div></div>
+            <div class="hour h9"><div class="half-hour"></div></div>
+            <div class="hour h10"><div class="half-hour"></div></div>
+            <div class="hour h11"><div class="half-hour"></div></div>
+            <div class="hour h12"><div class="half-hour"></div></div>
+            <div class="hour h13"><div class="half-hour"></div></div>
+            <div class="hour h14"><div class="half-hour"></div></div>
+            <div class="hour h15"><div class="half-hour"></div></div>
+            <div class="hour h16"><div class="half-hour"></div></div>
+            <div class="hour h17"><div class="half-hour"></div></div>
+            <div class="hour h18"><div class="half-hour"></div></div>
+            <div class="hour h19"><div class="half-hour"></div></div>
+            <div class="hour h20"><div class="half-hour"></div></div>
+            <div class="hour h21"><div class="half-hour"></div></div>
+            <div class="hour h22"><div class="half-hour"></div></div>
+            <div class="hour h23"><div class="half-hour"></div></div>
+          </div>
+          <div id="mar" class="day-col">
+            <div class="hour h0"><div class="half-hour"></div></div>
+            <div class="hour h1"><div class="half-hour"></div></div>
+            <div class="hour h2"><div class="half-hour"></div></div>
+            <div class="hour h3"><div class="half-hour"></div></div>
+            <div class="hour h4"><div class="half-hour"></div></div>
+            <div class="hour h5"><div class="half-hour"></div></div>
+            <div class="hour h6"><div class="half-hour"></div></div>
+            <div class="hour h7"><div class="half-hour"></div></div>
+            <div class="hour h8"><div class="half-hour"></div></div>
+            <div class="hour h9"><div class="half-hour"></div></div>
+            <div class="hour h10"><div class="half-hour"></div></div>
+            <div class="hour h11"><div class="half-hour"></div></div>
+            <div class="hour h12"><div class="half-hour"></div></div>
+            <div class="hour h13"><div class="half-hour"></div></div>
+            <div class="hour h14"><div class="half-hour"></div></div>
+            <div class="hour h15"><div class="half-hour"></div></div>
+            <div class="hour h16"><div class="half-hour"></div></div>
+            <div class="hour h17"><div class="half-hour"></div></div>
+            <div class="hour h18"><div class="half-hour"></div></div>
+            <div class="hour h19"><div class="half-hour"></div></div>
+            <div class="hour h20"><div class="half-hour"></div></div>
+            <div class="hour h21"><div class="half-hour"></div></div>
+            <div class="hour h22"><div class="half-hour"></div></div>
+            <div class="hour h23"><div class="half-hour"></div></div>
+          </div>
+          <div id="mer" class="day-col">
+            <div class="hour h0"><div class="half-hour"></div></div>
+            <div class="hour h1"><div class="half-hour"></div></div>
+            <div class="hour h2"><div class="half-hour"></div></div>
+            <div class="hour h3"><div class="half-hour"></div></div>
+            <div class="hour h4"><div class="half-hour"></div></div>
+            <div class="hour h5"><div class="half-hour"></div></div>
+            <div class="hour h6"><div class="half-hour"></div></div>
+            <div class="hour h7"><div class="half-hour"></div></div>
+            <div class="hour h8"><div class="half-hour"></div></div>
+            <div class="hour h9"><div class="half-hour"></div></div>
+            <div class="hour h10"><div class="half-hour"></div></div>
+            <div class="hour h11"><div class="half-hour"></div></div>
+            <div class="hour h12"><div class="half-hour"></div></div>
+            <div class="hour h13"><div class="half-hour"></div></div>
+            <div class="hour h14"><div class="half-hour"></div></div>
+            <div class="hour h15"><div class="half-hour"></div></div>
+            <div class="hour h16"><div class="half-hour"></div></div>
+            <div class="hour h17"><div class="half-hour"></div></div>
+            <div class="hour h18"><div class="half-hour"></div></div>
+            <div class="hour h19"><div class="half-hour"></div></div>
+            <div class="hour h20"><div class="half-hour"></div></div>
+            <div class="hour h21"><div class="half-hour"></div></div>
+            <div class="hour h22"><div class="half-hour"></div></div>
+            <div class="hour h23"><div class="half-hour"></div></div>
+          </div>
+          <div id="jeu" class="day-col">
+            <div class="hour h0"><div class="half-hour"></div></div>
+            <div class="hour h1"><div class="half-hour"></div></div>
+            <div class="hour h2"><div class="half-hour"></div></div>
+            <div class="hour h3"><div class="half-hour"></div></div>
+            <div class="hour h4"><div class="half-hour"></div></div>
+            <div class="hour h5"><div class="half-hour"></div></div>
+            <div class="hour h6"><div class="half-hour"></div></div>
+            <div class="hour h7"><div class="half-hour"></div></div>
+            <div class="hour h8"><div class="half-hour"></div></div>
+            <div class="hour h9"><div class="half-hour"></div></div>
+            <div class="hour h10"><div class="half-hour"></div></div>
+            <div class="hour h11"><div class="half-hour"></div></div>
+            <div class="hour h12"><div class="half-hour"></div></div>
+            <div class="hour h13"><div class="half-hour"></div></div>
+            <div class="hour h14"><div class="half-hour"></div></div>
+            <div class="hour h15"><div class="half-hour"></div></div>
+            <div class="hour h16"><div class="half-hour"></div></div>
+            <div class="hour h17"><div class="half-hour"></div></div>
+            <div class="hour h18"><div class="half-hour"></div></div>
+            <div class="hour h19"><div class="half-hour"></div></div>
+            <div class="hour h20"><div class="half-hour"></div></div>
+            <div class="hour h21"><div class="half-hour"></div></div>
+            <div class="hour h22"><div class="half-hour"></div></div>
+            <div class="hour h23"><div class="half-hour"></div></div>
+          </div>
+          <div id="ven" class="day-col">
+            <div class="hour h0"><div class="half-hour"></div></div>
+            <div class="hour h1"><div class="half-hour"></div></div>
+            <div class="hour h2"><div class="half-hour"></div></div>
+            <div class="hour h3"><div class="half-hour"></div></div>
+            <div class="hour h4"><div class="half-hour"></div></div>
+            <div class="hour h5"><div class="half-hour"></div></div>
+            <div class="hour h6"><div class="half-hour"></div></div>
+            <div class="hour h7"><div class="half-hour"></div></div>
+            <div class="hour h8"><div class="half-hour"></div></div>
+            <div class="hour h9"><div class="half-hour"></div></div>
+            <div class="hour h10"><div class="half-hour"></div></div>
+            <div class="hour h11"><div class="half-hour"></div></div>
+            <div class="hour h12"><div class="half-hour"></div></div>
+            <div class="hour h13"><div class="half-hour"></div></div>
+            <div class="hour h14"><div class="half-hour"></div></div>
+            <div class="hour h15"><div class="half-hour"></div></div>
+            <div class="hour h16"><div class="half-hour"></div></div>
+            <div class="hour h17"><div class="half-hour"></div></div>
+            <div class="hour h18"><div class="half-hour"></div></div>
+            <div class="hour h19"><div class="half-hour"></div></div>
+            <div class="hour h20"><div class="half-hour"></div></div>
+            <div class="hour h21"><div class="half-hour"></div></div>
+            <div class="hour h22"><div class="half-hour"></div></div>
+            <div class="hour h23"><div class="half-hour"></div></div>
+          </div>
+          <div id="sam" class="day-col">
+            <div class="hour h0"><div class="half-hour"></div></div>
+            <div class="hour h1"><div class="half-hour"></div></div>
+            <div class="hour h2"><div class="half-hour"></div></div>
+            <div class="hour h3"><div class="half-hour"></div></div>
+            <div class="hour h4"><div class="half-hour"></div></div>
+            <div class="hour h5"><div class="half-hour"></div></div>
+            <div class="hour h6"><div class="half-hour"></div></div>
+            <div class="hour h7"><div class="half-hour"></div></div>
+            <div class="hour h8"><div class="half-hour"></div></div>
+            <div class="hour h9"><div class="half-hour"></div></div>
+            <div class="hour h10"><div class="half-hour"></div></div>
+            <div class="hour h11"><div class="half-hour"></div></div>
+            <div class="hour h12"><div class="half-hour"></div></div>
+            <div class="hour h13"><div class="half-hour"></div></div>
+            <div class="hour h14"><div class="half-hour"></div></div>
+            <div class="hour h15"><div class="half-hour"></div></div>
+            <div class="hour h16"><div class="half-hour"></div></div>
+            <div class="hour h17"><div class="half-hour"></div></div>
+            <div class="hour h18"><div class="half-hour"></div></div>
+            <div class="hour h19"><div class="half-hour"></div></div>
+            <div class="hour h20"><div class="half-hour"></div></div>
+            <div class="hour h21"><div class="half-hour"></div></div>
+            <div class="hour h22"><div class="half-hour"></div></div>
+            <div class="hour h23"><div class="half-hour"></div></div>
+          </div>
+        </div>
+      </div>
+      <div id="tasks">
+        <div id="tasks-title">Tâches</div>
+      </div>
+    </div>
+    <div id="footer">
+    
+    </div>
+  </div>
+</body>  
+</html>
