@@ -1,0 +1,19 @@
+body {
+  font: 0.8em 'Lucida Grande';
+  color: #333;
+}
+#control-panel {
+  float: left;
+  width: 180px;
+}
+#control-panel span {
+  float:left;
+  height:120px;
+  margin:10px;
+}
+#pie-chart {
+  float: left;
+}
+#bar-chart {
+  float: left;
+}
