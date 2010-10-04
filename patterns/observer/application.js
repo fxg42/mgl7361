@@ -37,7 +37,7 @@ $(function () {
             if (evt.target === this) {
                 var data = model.data();
                 var chartData = data.value1 + ',' + data.value2 + ',' + data.value3 + ',' + data.value4 + ',' + data.value5;
-                var src = 'http://chart.apis.google.com/chart?cht=p3&chs=290x130&chd=t:'+ chartData +'&chl=Value1|Value2|Value3|Value4|Value5';
+                var src = 'http://chart.apis.google.com/chart?cht=p3&chs=290x130&chd=t:'+ chartData +'&chl=1|2|3|4|5';
                 $(this).find('img').attr('src', src);
             }
         })
@@ -62,7 +62,7 @@ $(function () {
         .slider({
             value: 0, min: 0, max: 100, step: 10, orientation: 'vertical', range: 'min'
         })
-        .bind('slidestop', function(evt, ui) {
+        .bind('slide', function(evt, ui) {
             var name = $(this).attr('id');
             model.data(name, ui.value);
         })
