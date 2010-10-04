@@ -48,14 +48,42 @@
           <version>1.0</version>
         </plugin>
         <plugin>
-          <groupId>ca.qc.barreau.maven.plugins</groupId>
-          <artifactId>groovy-compiler-plugin</artifactId>
-          <version>1.0</version>
+          <artifactId>maven-antrun-plugin</artifactId>
           <executions>
             <execution>
+              <id>compile</id>
+              <phase>compile</phase>
+              <configuration>
+                <tasks>
+                  <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc">
+                    <classpath refid="maven.compile.classpath" />
+                  </taskdef>
+                  <mkdir dir="${project.build.outputDirectory}" />
+                  <groovyc srcdir="${basedir}/src/main/groovy/" destdir="${project.build.outputDirectory}" encoding="${project.build.sourceEncoding}">
+                    <classpath refid="maven.compile.classpath" />
+                  </groovyc>
+                </tasks>
+              </configuration>
               <goals>
-                <goal>compile</goal>
-                <goal>test-compile</goal>
+                <goal>run</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>test-compile</id>
+              <phase>test-compile</phase>
+              <configuration>
+                <tasks>
+                  <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc">
+                    <classpath refid="maven.compile.classpath" />
+                  </taskdef>
+                  <mkdir dir="${project.build.testOutputDirectory}" />
+                  <groovyc srcdir="${basedir}/src/test/groovy/" destdir="${project.build.testOutputDirectory}" encoding="${project.build.sourceEncoding}">
+                    <classpath refid="maven.test.classpath" />
+                  </groovyc>
+                </tasks>
+              </configuration>
+              <goals>
+                <goal>run</goal>
               </goals>
             </execution>
           </executions>

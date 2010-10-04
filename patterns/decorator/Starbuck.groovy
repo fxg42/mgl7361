@@ -99,7 +99,7 @@ class Shot extends BoissonDecorator {
 
 Boisson americano = new Eau (new Espresso ())
 Boisson caffeLatte = new Lait (new Espresso ())
-Boisson cafeViennois = new CremeFouettee (new Espresso ())
+Boisson cafeViennois = new CremeFouettee (new Lait (new Espresso ()))
 Boisson capuccino = new Mousse (new Lait (new Espresso ()))
 Boisson redEye = new Shot (new CafeFiltre ())
 Boisson redEyeViennois = new CremeFouettee (redEye)
