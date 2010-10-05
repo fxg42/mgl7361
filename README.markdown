@@ -12,6 +12,7 @@ Compilation et dépendances
 --------------------------
 
 Pour compiler et installer __Agenda__, certains logiciels sont nécessaires:
+
 - Maven
 - Tomcat (ou un autre conteneur de servlet Java)
 - PostgreSQL (ou une autre base de données relationnelle)
