@@ -1,0 +1,337 @@
+% preambule (fold)
+\documentclass{article}
+
+\usepackage[french]{babel}
+\usepackage{endnotes}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{subfig}
+
+% font definitions (fold)
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\defaultfontfeatures{Numbers=OldStyle, Ligatures={Common}, Mapping=tex-text} \setromanfont[ItalicFont={* Slanted}, BoldFont={* Demi}, SmallCapsFont={* Caps}] {Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont[Scale=MatchLowercase]{Monaco}
+\newfontfamily\zapfino{Zapfino}
+\newfontfamily\typewriter{American Typewriter}
+% font definitions (end)
+% custom commands and environment (fold)
+\newcommand{\footlink}[1] {\endnote{\href{#1}{\texttt{#1}}}}
+\newcommand{\ie} {c.-à-d. }
+\newcommand{\eg} {p.~ex. }
+\newenvironment{resumeChapitre}
+  {\begin{center}\small\bf\begin{em}}
+  {\end{em}\end{center}}
+% custom commands and environment (end)
+% filigrane (fold)
+% \usepackage{eso-pic,xcolor}
+% \AddToShipoutPicture {
+%   \unitlength=1in
+%   \put(1.55,3.5) {
+%     \rotatebox{45} {
+%       \textcolor{lightgray} {
+%         \fontsize{48}{48}\bf\typewriter COPIE DE TRAVAIL
+%       }
+%     }
+%   }
+% }
+% filigrane (end)
+% captions pour listings (fold)
+\usepackage{caption}
+\usepackage{color}
+\DeclareCaptionFont{white} {
+  \color{white}\sffamily
+}
+\DeclareCaptionFormat{listing} {
+  \colorbox[cmyk]{0.43, 0.35, 0.35, 0.01} {
+    \parbox{\textwidth-17pt} {
+      \hspace{7pt}#1#2#3
+    }
+  }
+}
+\captionsetup[lstlisting] {
+  format=listing,
+  labelfont=white,
+  textfont=white,
+  singlelinecheck=false,
+  margin=0pt,
+  font={bf,footnotesize}
+}
+% captions pour listings (end)
+% code environment declaration (fold)
+\usepackage{listings}
+\lstnewenvironment{snippet}[1][] {
+  \lstset {
+    basicstyle=\small\ttfamily,
+    stringstyle=\small\ttfamily,
+    showstringspaces=false, #1
+  }
+}{}
+\lstnewenvironment{code}[1][] {
+  \lstset {
+    basicstyle=\small\ttfamily,
+    xleftmargin=17pt,
+    framexleftmargin=14pt,
+    framexrightmargin=-3pt,
+    framexbottommargin=4pt,
+    frame=b, #1
+  }
+}{}
+% \begin{code}[gobble=2,label=helloworld,caption=Bonjour le monde]
+%   println "Hello World"
+%   // ...
+% \end{code}
+% code environment declaration (end)
+% césures de mots (fold)
+\lccode`\'="2019\lccode"2019="2019 % césure de mots avec un apostrophe
+\hyphenation{Java-Script immu-able l'in-for-ma-tion Internet-Explorer}
+% césures de mots (end)
+\addto\captionsfrench{%
+  \renewcommand{\abstractname}%
+    {Description du cours selon l'annuaire}
+}
+% preambule (end)
+
+\begin{document}
+
+% title (fold)
+\title{Principes et applications de la conception de logiciels\\\vspace{1cm}\Large MGL7361 Groupe 10 -- Automne 2010}
+\author{François-Xavier Guillemette, M.Sc.\\\small\texttt{www.labunix.uqam.ca/\~{}guillemette}}
+\maketitle
+% title (end)
+
+\begin{abstract}
+Rôle de la conception dans le cycle de vie du logiciel. Apprentissage des principales méthodes de conception. Évaluation de nouvelles méthodes de conception. Sélection et utilisation d'une méthode propre à un système logiciel donné. Évaluation de la conception: choix de la méthode, qualité de la conception, vérification formelle, respect des exigences, etc. Outils de conception.
+\nocite{brooksjr2010tdod, raymond1999cab, brooksjr1995mmm, mcconnell1996rdt, boudreau2007rcp, pressman2005sep, larman2001aua, fowler1999rid, gamma1995dpe, kaisler2005sp, hohmann2003bsa, beck2008ip, fowler2003poeaa, hohpe2003eip, steel2006csp, hunt1999ppj, mcconnell2004cc, thomas2001pr, richardson2007rws, laddad2003aap, weinberg1998pcp, cockburn2002asd, tulach2008pad, bloch2008ejp, martin2009cc, mcconnell2006software, odersky2008ps, beck2003test, evans2004domain, alexander1979timeless, crockford2008javascript, subramaniam2009ps, mitnick2002ad, crane2006aa, flanagan2005jn, konig2007ga, schmidt2006eir, norman2002design}
+\end{abstract}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Plan de cours}
+\label{sec:plan_de_cours}
+
+\subsection{Objectifs}
+\label{sub:objectifs}
+
+\begin{itemize}
+\item Comprendre la problématique de la conception dans les systèmes contemporains.
+\item Situer les activités de conception dans le cycle de vie du logiciel.
+\item Connaître les principales normes de la conception.
+\item Initier les étudiants aux principaux modèles contemporains concernant la conception architecturale.
+\item Initier les étudiants au concept d'urbanisation des systèmes d'information.
+\item Donner aux étudiants un aperçu théorique des principales propriétés d'une bonne conception.
+\item Initier les étudiants aux architectures 2-tiers et n-tiers.
+\item Comprendre les tendances émergentes au niveau de la couche «présentation».
+\item Familiariser les étudiants à l'architecture par composant.
+\item Initier les étudiants aux principes de base de l'approche orientée objet.
+\item Faire apprécier aux étudiants l'importance des enjeux reliés à la conception.
+\item Familiariser les étudiants aux principaux patrons utilisés pour la conception OO.
+\item Sensibiliser les étudiants aux activités postérieures à la conception.
+\item Donner aux étudiants un aperçu de l'impact des services Web sur l'architecture des systèmes (SOA) et sur le design, en particulier au niveau de la granularité des services.
+\item Initier les étudiants à la problématique de la persistance.
+\item Sensibiliser les étudiants aux concepts de chorégraphie et d'orchestration des services Web.
+\item Connaître certains frameworks architecturaux.
+\item Initier les étudiants aux nouvelles approches dans le domaine.
+\end{itemize}
+
+\subsection{Évaluation}
+\label{sub:Evaluation}
+Un travail remis en retard reçoit la note zéro à moins d'avoir fait l'objet d'une entente préalable avec le professeur. 
+
+Le détail des conditions de réalisation de chaque travail est précisé avec la description du travail. 
+
+La qualité du français fait partie intégrante des critères d'évaluation des travaux et des examens jusqu'à un maximum de 25\%. 
+
+La politique de tolérance zéro du département d'informatique sera appliquée à l'égard des infractions de nature académique. 
+
+La note de passage du cours est de 60\% pour l'ensemble de l'évaluation et de 50\% pour l'examen final.
+
+\subsection{Calendrier}
+\label{sub:calendrier}
+Le contenu de chaque période dépendra des besoins des étudiants au fur et à mesure de la réalisation de leurs projets.
+
+Le livre \textsc{Domain-Driven Design}\cite{evans2004domain} est obligatoire. 
+
+Les lectures doivent avoir été faites avant le cours pour lequel elles sont indiquées.
+
+\begin{center}
+\begin{tabular}{|c|c|l|l|}
+\hline
+\textbf{Période} & \textbf{Date} & \textbf{Contenu} & \textbf{Lectures} \\
+\hline
+1 & 13 sept. & Introduction & \textsc{ddd}\cite[ch.1 et 2]{evans2004domain}\\
+2 & 20 sept. & & \textsc{ddd}\cite[ch.3]{evans2004domain}\\
+3 & 27 sept. & & \textsc{ddd}\cite[ch.4]{evans2004domain}\\
+4 & 4 sept. & & \textsc{ddd}\cite[ch.5]{evans2004domain}\\
+- & 11 oct. & Congé & \textsc{ddd}\cite[ch.6 et 7]{evans2004domain}\\
+5 & 18 oct. & & \textsc{ddd}\cite[ch.8]{evans2004domain}\\
+6 & 25 oct. & & \textsc{ddd}\cite[ch.9]{evans2004domain}\\
+7 & 1 nov. & & \textsc{ddd}\cite[ch.10]{evans2004domain}\\
+8 & 8 nov. & & \textsc{ddd}\cite[ch.11]{evans2004domain}\\
+9 & 15 nov. & & \textsc{ddd}\cite[ch.12]{evans2004domain}\\
+10 & 22 nov. & & \textsc{ddd}\cite[ch.13]{evans2004domain}\\
+11 & 29 nov. & & \textsc{ddd}\cite[ch.14]{evans2004domain}\\
+12 & 6 déc. & & \textsc{ddd}\cite[ch.15]{evans2004domain}\\
+13 & 13 déc. & Conclusion & \textsc{ddd}\cite[ch.16]{evans2004domain}\\
+14 & 20 déc. & Examen final & \textsc{ddd}\cite[ch.17]{evans2004domain}\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Logistique}
+\label{sub:logistique}
+
+Les cours ont lieu les lundis de 18:00 à 21:00 au SH-3260.% PK-4665. 
+
+\subsection{Approche pédagogique}
+\label{sub:approche_pedagogique}
+
+Le cours se base sur une approche par projet. L'approche par projet s'inscrit dans l'esprit de la formation par compétence. Il permet la mobilisation des ressources de l'étudiant dans la réalisation d'une tâche authentique.
+
+Le cours est structuré comme un jeu de rôle en ligne massivement multijoueurs\footnote{voir \href{http://gamingtheclassroom.wordpress.com/}{\texttt{Gaming the Classroom}}}. L'étudiant accumule des points d'expérience (XP) en complétant des quêtes, des missions et des duels.
+
+Au début de la session, le groupe sera divisé en guildes d'environ 6 à 9 étudiants, tout dépendant du nombre d'étudiants inscrits. Chaque guilde devra, avant la fin de la session, accomplir une quête. Cette quête consiste à la réalisation d'un projet de design, de conception et de réalisation d'une application. Le logiciel produit par la guilde devra, entre autres choses, respecter les critères et les besoins exprimés par le client (\ie l'enseignant).
+
+Afin de réaliser cette quête, la guilde devra se scinder en petits groupes de 2 à 3 étudiants afin de réaliser des missions d'exploration technologiques (\ie d'analyses technologiques comparatives). Chaque étudiant devra participer à au moins une d'entre-elles. Ces missions doivent permettre à la guilde de choisir les solutions technologiques qui seront utilisées dans la complétion de la quête.
+
+En plus de la quête et des missions d'exploration, les étudiants seront (fortement) invités à participer à des missions de développement d'habiletés (\emph{Crafting}). Celles-ci peuvent être réalisées seules ou en petits groupes de 2 à 3 étudiants.
+
+Finalement, 5 exercices de design solo (des duels) seront demandés aux étudiants pendant la session.
+
+Chaque étudiant débute la session en tant qu'avatar de niveau 1. Le niveau 9 est le niveau le plus élevé qu'il peut atteindre:
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Niveau} & \textbf{XP} & \textbf{Note}\\
+\hline
+9 & 1850 & A+ \\
+\hline
+8 & 1700 & A \\
+\hline
+7 & 1575 & A- \\
+\hline
+6 & 1475 & B+ \\
+\hline
+5 & 1400 & B \\
+\hline
+4 & 1325 & B- \\
+\hline
+3 & 1250 & C+ \\
+\hline
+2 & 1200 & C \\
+\hline
+1 & 0 & E \\
+\hline
+\end{tabular}
+\end{center}
+
+L'étudiant accède à des niveaux supérieurs en accumulant des points d'expérience. L'étudiant doit obligatoirement participer à une quête de guilde, une mission d'exploration, aux 5 duels et à l'examen final. L'étudiant peut participer à autant de missions d'exploration et de développement d'habiletés supplémentaires qu'il le désire. Il peut les choisir dans la liste fournie à la section suivante ou en déterminer une avec l'enseignant\footnote{Cette voie est idéale pour aider l'étudiant à la réalisation de son projet de maîtrise.}.
+
+Les étudiants ont une semaine pour réaliser les duels. La mission d'exploration obligatoire doit être remise au plus tard lors de la séance numéro 5. Tous les autres travaux devront être remis au plus tard pendant la séance numéro 13. Afin de donner une rétroaction appréciable à l'étudiant, l'enseignant corrigera les travaux dans la semaine suivant leur remise.
+
+Chaque période de cours sera divisée en deux. La première partie abordera des thèmes choisis préalablement par les étudiants pour les aider dans la réalisation de leur quête et missions. Si aucun thème n'est proposé par les étudiants, un thème contemporain sera présenté par le professeur à son choix. La deuxième partie consistera à réviser avec chaque groupe et guilde le déroulement des quêtes entreprises dans le but d'éviter des dérives éventuelles. Le logiciel produit par les guildes sera présenté par celles-ci lors de la période de laboratoire de l'avant-dernière séance.
+
+\subsection{Description des travaux}
+\label{sub:description_des_travaux}
+
+\paragraph{Évaluation finale (solo) -- 600 XP max.}
+\label{par:Evaluation_finale_600_xp}
+
+L'évaluation finale est obligatoire. La condition de double-échec s'applique (voir p.\pageref{sub:Evaluation}) : du nombre total de points d'expérience accumulés pendant la session, 300 doivent obligatoirement provenir de l'évaluation finale.
+
+\paragraph{Duels (solo) -- 60 XP chq. max.}
+\label{par:exercice_de_design_solo_60_xp_chq}
+
+Les exercices de design permettront aux étudiants de pratiquer certains concepts: applications de \emph{design patterns}\cite{gamma1995dpe, evans2004domain, fowler2003poeaa}, réalisations d'analyse conceptuelles, etc. L'énoncé de l'exercice sera donné en classe et le travail devra être remis à la séance suivante. Certains travaux, pourraient être présentés en classe, anonymement, lors de la période de laboratoire.
+
+\paragraph{Quête (guilde) -- 400 XP}
+\label{par:quete}
+
+Chaque guilde devra concevoir et réaliser une application complète. Cette application devra respecter le modèle en couches: présentation, métier, persistance. Les choix technologiques pour chaque couche applicative devront être supportés par une analyse comparative (mission d'exploration) effectuée par les membres de la guilde.
+
+La nature exacte du projet ainsi que les cas d'utilisation seront présentés lors de la deuxième séance du cours.
+
+\paragraph{Mission d'exploration (groupe) -- 400 XP chq. max.}
+\label{par:mission_d_exploration_groupe_400_xp_chq}
+
+Chaque étudiant doit compléter au moins une mission d'exploration avant la séance numéro 5.
+
+Une mission d'exploration consiste à faire une analyse comparative de 3 solutions technologiques à un problème donné. Le rapport produit doit comprendre une description des 3 solutions, une description des critères de comparaison retenus, l'évaluation des solutions par rapport à ces critères et une recommandation à votre guilde.
+
+Explorations possibles:
+\begin{itemize}
+\item \textbf{Exploration des solutions pour la couche présentation:} GWT, Swing (avec NetBeans), jQueryUI, ZK, ExtJS, JSF, JavaFX, Flash, Cappucino, Orbeon, etc.
+\item \textbf{Exploration des plateformes de développement «mobiles»:} Android, iOS, BlackBerry, web.
+\item \textbf{Exploration des frameworks applicatifs:} Spring, Guice, pico, Google App Engine, Grails (ou Rails, ou Django, ou Lift)
+\item \textbf{Exploration des moteurs de règles d'affaire et de \emph{workflows}:} JBoss Drools, CLIPS, OpenRules, Bonita.
+\item \textbf{Exploration des solutions \emph{middleware}:} ESB, WebServices (WS-*), REST, fichiers partagés, Ajax, Comet, etc.
+\item \textbf{Exploration des solutions pour la couche persistance:} Hibernate, ActiveRecord (Rails ou Grails), JDO, EJB3, TopLink, iBATIS.
+\item \textbf{Exploration des solutions pour la base de données:} Relationnelle, Objet, XML, NoSQL (CouchDB, Hadoop, MongoDB, Voldemort \& cie.)
+\end{itemize}
+
+\paragraph{Développement d'habileté (solo ou en groupe) -- 100 à 400 XP chq. max.}
+\label{par:developpement_d_habilete}
+
+Les missions de développement d'habileté (\emph{Crafting}) servent à approfondir les connaissances de l'étudiant en réalisant des projets dirigés. Ils peuvent aussi servir à approfondir le projet de maîtrise de l'étudiant. Le nombre de points d'expérience accordés dépend de l'ampleur et de la complexité de la mission que l'étudiant décide d'entreprendre. Avant de commencer une telle mission, l'étudiant devra avoir l'accord de l'enseignant afin qu'ils puissent déterminer ensemble l'envergure du travail à réaliser ainsi que le nombre de points possibles.
+
+Voici quelques suggestions possibles:
+\begin{itemize}
+\item \textbf{Étude des langages de programmation dynamiques:} description; inventaire; potentiel; opportunités; forces; faiblesses; productivité; performance; etc.
+\item \textbf{Étude des langages spécifiques aux domaines d'affaire (DSL):} raison d'être; description; réalisation; preuve de concept, etc.
+\item \textbf{Étude de la programmation orientée-aspects (AOP):} raison d'être; solutions disponibles; forces; faiblesses.
+\item \textbf{Réalisation d'une application simple avec un framework de développement rapide:} Ruby on Rails, Google App Engine, Grails, Lift, Griffon, Django, etc.
+\item \textbf{Étude des systèmes de journalisation Java.}
+\item \textbf{Réalisation d'une application simple avec le framework \emph{Naked Objects}.}
+\end{itemize}
+
+\paragraph{Revue par les pairs (solo) -- 100 XP max.}
+\label{par:revue_par_les_pairs_100_xp}
+
+Lors de l'examen final, les membres d'une guilde devront évaluer la participation de leur confrères et cons\oe{}urs en leur accordant 0, 25, 50, 75 ou 100 points d'expérience supplémentaires.
+
+\section{Sommaire des thèmes abordés}
+\label{sec:sommaire_des_themes_abordes}
+
+Les thèmes suivants pourraient être abordés dans le cadre du cours. Toutefois, puisque les étudiants peuvent participer à la sélection des thèmes, cette liste est sujette à changer.
+
+\subsection{Introduction}
+\subsection{UML}
+\subsection{Principes de design}
+\subsection{Modèle en couches}
+\subsubsection{La couche présentation}
+\subsubsection{La couche métier}
+\subsubsection{La couche persistance}
+\subsubsection{La couche données}
+\subsection{Niveaux de design}
+\subsection{\emph{Design-Patterns}}
+\subsubsection{Patterns classiques}
+\subsubsection{Patterns d'entreprise}
+\subsubsection{Patterns d'intégration}
+\subsubsection{\emph{Domain Patterns}}
+\subsection{L'injection de dépendances}
+\subsection{Environnements de déploiement}
+\subsection{Messagerie synchrone et asynchrone}
+\subsection{Journalisation, configuration et surveillance}
+\subsection{Interaction avec les systèmes patrimoniaux}
+\subsection{Programmation orientée-aspects et métaprogrammation}
+\subsection{Distribution des couches applicatives}
+\subsection{Moteurs de règles d'affaire}
+\subsection{Générateurs d'application}
+\subsection{Domain-Specific Languages}
+\subsection{Modélisation des processus}
+\subsection{Urbanisation des systèmes d'information}
+\subsection{Qualité et métriques}
+
+% bibliography (fold)
+\pagebreak
+\bibliographystyle{alpha}
+\bibliography{biblio}
+% bibliography (end)
+
+\end{document}
