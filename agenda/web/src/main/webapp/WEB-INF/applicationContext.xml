@@ -8,7 +8,7 @@
            http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
   
-  <jee:jndi-lookup id="dataSource" jndi-name="jdbc/postgres" resource-ref="true"/>
+  <jee:jndi-lookup id="dataSource" jndi-name="jdbc/datasource" resource-ref="true"/>
 
   <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
     <jdbc:script location="META-INF/create-schema.sql"/>

@@ -10,30 +10,24 @@ __Agenda__ est une application qui servira de base pour illustrer certains exemp
 Compilation et dépendances
 --------------------------
 
-Pour compiler et installer __Agenda__, certains logiciels sont nécessaires:
+Pour compiler et installer __Agenda__, le logiciel [Maven](http://maven.apache.org/download.html "Maven") est nécessaire.
 
-- Maven
-- Tomcat (ou un autre conteneur de servlet Java)
-- PostgreSQL (ou une autre base de données relationnelle)
-
-Le script de création de table et la configuration de la DataSource se trouvent dans le répertoire suivant:
-
-    agenda/web/src/main/webapp/META-INF/create-schema.sql
-    agenda/web/src/main/webapp/META-INF/context.xml
-
-Il est probable que vous deviez modifier ces deux fichiers avec les paramètres de votre propre base de données.
-
-Le téléchargement, la compilation et l'installation du projet se fait ainsi:
+Si vous avez le logiciel _git_, vous pouvez cloner le projet comme ceci:
 
     prompt> git clone http://github.com/fxg42/mgl7361.git mgl7361
-    prompt> cd mgl7361/agenda
-    
-    [ modifications manuelles aux fichiers create-schema.sql et context.xml ]
-    
-    prompt> mvn clean package
-    prompt> cp web/target/agenda.war $TOMCAT_HOME/webapps/
 
-Description (_très_) sommaire
+Sinon, téléchargez le code source en format zip et désarchivez-le dans le répertoire "mgl7361".
+
+La compilation et l'exécution du projet se font ainsi:
+
+    prompt> cd mgl7361/agenda
+    prompt> mvn clean install
+    prompt> cd web
+    prompt> mvn tomcat:run-war -Dtomcat.maven.path=/agenda
+
+Vous pourrez alors accéder à l'application depuis votre fureteur à l'adresse [http://localhost:8080/agenda/evenements/list.html](http://localhost:8080/agenda/evenements/list.html).
+
+Description _(très)_ sommaire
 -----------------------------
 
 - Le module _api_ contient la façade métier ainsi que la seule classe du modèle.
