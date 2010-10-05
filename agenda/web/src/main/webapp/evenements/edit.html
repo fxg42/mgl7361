@@ -1,0 +1,31 @@
+import ca.uqam.mgl7361.*
+import ca.uqam.mgl7361.agenda.*
+
+ISO8601_TIMESTAMP_WITHOUT_TIMEZONE = "yyyy-MM-dd'T'HH:mm"
+
+session = session ?: request.getSession(true)
+render = (new Renderer(servletContext: context)).&render
+
+method = request.method
+if (method == 'GET') {
+    handleGET()
+} else if (method == 'POST') {
+    handlePOST()
+    response.sendRedirect('list.html')
+}
+
+def handleGET () {
+    println render ('/WEB-INF/evenements/edit.gsp', [
+        action: 'edit.html', submitName: 'Modifier', evenement: session.agenda.findById(params.id.toInteger())
+    ])
+}
+
+def handlePOST () {
+    session.agenda.updateEvenement(
+        new Evenement([ id: params.id.toInteger(), nom: params.nom, du: parseDate(params.du), au: parseDate(params.au) ])
+    )
+}
+
+def parseDate (val) {
+    Date.parse(ISO8601_TIMESTAMP_WITHOUT_TIMEZONE, val)
+}
