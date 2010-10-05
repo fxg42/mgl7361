@@ -1,5 +1,5 @@
--- DROP TABLE evenements;
--- DROP TABLE calendriers;
+DROP TABLE evenements;
+DROP TABLE calendriers;
 
 CREATE TABLE calendriers (
   id serial NOT NULL,
@@ -19,3 +19,13 @@ CREATE TABLE evenements (
   CONSTRAINT evenements_calendrier_id_fkey FOREIGN KEY (calendrier_id) REFERENCES calendriers (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 ALTER TABLE evenements OWNER TO postgres;
+
+INSERT INTO evenements (
+  du,
+  au,
+  nom
+) VALUES (
+  now() - interval '2 hours',
+  now() + interval '1 hour',
+  'Bonjour le monde!'
+);
