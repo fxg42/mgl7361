@@ -2,7 +2,7 @@ package ca.uqam.mgl7361.agenda
 
 class Evenement {
 
-    Long id
+    int id
     String nom
     Date du
     Date au
