@@ -10,7 +10,7 @@ class Ventilateur {
         state = state.nextState()
         println "[crick!]"
     }
-    String getDescription () {
+    String getDescriptionVitesse () {
         state.getDescription(this)
     }
 }
@@ -54,10 +54,22 @@ class High extends VitesseState {
 }
 
 v = new Ventilateur("salon")
-println v.getDescription()
+println "début..."
+println v.getDescriptionVitesse()
 
 5.times {
     v.tirerChainette()
-    println v.getDescription()
+    println v.getDescriptionVitesse()
 }
+
+
+
+
+
+
+
+
+
+
+
 

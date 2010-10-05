@@ -18,7 +18,6 @@ class LoggingDecorator implements Calculatrice {
     LoggingDecorator (target) {
         this.target = target
     }
-    
     def add (lhs, rhs) {
         println "appel de la méthode 'add(${lhs}, ${rhs})'"
         def res = target.add(lhs, rhs)
