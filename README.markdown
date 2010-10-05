@@ -5,8 +5,7 @@ __Agenda__ est une application qui servira de base pour illustrer certains exemp
 
 - Architecture en niveaux
 - MVC2
-- _Repository_, _Factory_
-- etc...
+- _Repository_, _Factory_, _Façade métier_, _Coordonateur_, etc.
 
 Compilation et dépendances
 --------------------------
@@ -34,3 +33,11 @@ Le téléchargement, la compilation et l'installation du projet se fait ainsi:
     prompt> mvn clean package
     prompt> cp web/target/agenda.war $TOMCAT_HOME/webapps/
 
+Description (_très_) sommaire
+-----------------------------
+
+- Le module _api_ contient la façade métier ainsi que la seule classe du modèle.
+- Le module _core_ contient l'implémentation de la couche métier.
+- Le module _persistence_ contient les classes qui sont responsables de l'accès à la base de données ainsi que la sérialisation/désérialisation des objets.
+- Le module _web_ contient les contrôleurs et les gabarits des pages web.
+- Le module _services_ contient certaines classes utilitaires.
