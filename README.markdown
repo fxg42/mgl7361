@@ -12,7 +12,7 @@ Compilation et dépendances
 
 Pour compiler et installer __Agenda__, le logiciel [Maven](http://maven.apache.org/download.html "Maven") est nécessaire.
 
-Si vous avez le logiciel _git_, vous pouvez cloner le projet comme ceci:
+Si vous avez le logiciel [git](http://git-scm.com/ "git"), vous pouvez cloner le projet comme ceci:
 
     prompt> git clone http://github.com/fxg42/mgl7361.git mgl7361
 
