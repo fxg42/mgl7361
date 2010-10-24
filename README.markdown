@@ -16,7 +16,7 @@ Si vous avez le logiciel _git_, vous pouvez cloner le projet comme ceci:
 
     prompt> git clone http://github.com/fxg42/mgl7361.git mgl7361
 
-Sinon, téléchargez le code source en format zip et désarchivez-le dans le répertoire "mgl7361".
+Sinon, [téléchargez](http://github.com/fxg42/mgl7361/zipball/master "zipball") le code source en format zip et désarchivez-le dans le répertoire "mgl7361".
 
 La compilation et l'exécution du projet se font ainsi:
 
