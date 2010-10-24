@@ -1,0 +1,380 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>MGL 7361</title>
+<link rel="shortcut icon" href="g3594.png">
+<style type="text/css" media="screen">
+  body {
+    background: #FEFEFE url(pebble_stack.jpg) no-repeat scroll left 200px;
+    color: #232623;
+    font: 0.75em Georgia,"Times New Roman",Times,serif;
+    margin-left: 40px;
+    margin-top: 40px;
+    width: 692px;
+  }
+  div.Title {
+    background-color: #232623;
+    color: #FEFEFE;
+    font-size: 2.5em;
+    font-variant: small-caps;
+    padding: 30px 0px;
+    text-align: center;
+    text-shadow: 0 -1px black;
+  }
+  div.Details {
+    background-color: #232623;
+    color: #FEFEFE;
+    font-size: 1em;
+    font-variant: small-caps;
+    padding-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 -1px black;
+  }
+  div.UpperDiv {
+    color: #70736A;
+    font: 0.8em Arial;
+    text-transform: uppercase;
+    height: 40px;
+    margin-bottom: 40px;
+    text-align: right;
+  }
+  div.UpperDiv a {
+    color: inherit;
+    text-decoration: none;
+  }
+  div.LeftDiv {
+    float: left;
+    width: 200px;
+  }
+  div.RightDiv {
+    float: right;
+    margin-left: 40px;
+    width: 452px;
+  }
+  div.LowerDiv {
+    color: #70736A;
+    float: right;
+    font: 0.75em Arial;
+    margin: 40px 0;
+  }
+  div.Date {
+    color: #70736A;
+    float: right;
+    font-size: 1.2em;
+    font-variant: small-caps;
+  }
+  div.Entry ul {
+    padding-left: 30px;
+  }
+  div.Entry ul li {
+    list-style-type: lower-roman;
+  }
+  div.Entry blockquote div.Quote {
+    font-style: italic;
+  }
+  div.Entry blockquote div.Quoted {
+    margin-top: 5px;
+    text-align: right;
+  }
+  div.Entry div.QuoteQuote {
+    font-size: 7.5em;
+    height: 0;
+    left: -29px;
+    opacity: 0.2;
+    position: relative;
+    top: -20px;
+  }
+  div.Entry a {
+    border-bottom: 1px dotted #70736A;
+    color: inherit;
+    text-decoration: none;
+  }
+  div.Entry a:hover {
+    border-bottom: 0;
+  }
+  div.Entry a:visited {
+    color: #70736A;
+  }
+  div.LowerDiv a {
+    color: inherit;
+    text-decoration: none;
+  }
+  div.LowerDiv a:hover {
+    border-bottom: 0;
+  }
+  div.LowerDiv a:visited {
+    color: inherit;
+  }
+  div.Entry tt {
+    font-family: Monaco, Courier, monospace;
+  }
+  #Separator {
+    color: #70736A;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    margin: 70px 0;
+    text-align: center;
+  }
+  div.EntrySeparator {
+    font-size: 2em;
+    text-align:center;
+    text-shadow: #70736A 3px 3px 3px;
+    margin: 50px 0;
+  }
+  span.pointer {
+    cursor: pointer;
+  }
+  #toc ul {
+    padding: 0 40px;
+  }
+  #toc li {
+    list-style-type: none;
+    border-bottom: 1px dotted #70736A;
+    cursor: pointer;
+  }
+  #toc li:hover {
+    color: #70736A;
+  }
+  #toc span {
+    background-color: #FEFEFE;
+    position: relative;
+    top: 6px;
+  }
+  #toc span.TocTitle {
+    padding-right: 6px;
+    font-style: italic;
+  }
+  #toc span.TocDate {
+    color: #70736A;
+    float: right;
+    padding-left: 6px;
+  }
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+    var firstEntry = function () {
+        return $('div.Entry:first');
+    };
+    
+    var pastEntries = function () {
+        return $('div.Entry:not(:first)');
+    };
+    
+    var scrollTo = function (distanceFromTop) {
+        $('html, body').animate({
+            scrollTop: distanceFromTop
+        });
+    };
+
+    var scrollJustAbove = function (elem) {
+      var distanceToEntryInPixels = elem.offset().top;
+      scrollTo(distanceToEntryInPixels - 30);
+    };
+    
+    var hidePastEntries = function () {
+        pastEntries().hide();
+    };
+    
+    var prettyPrintBlockquotes = function () {
+        $('blockquote').each(function (idx, it) {
+            $(it).wrapInner('<div class="Quote"></div>')
+                 .prepend('<div class="QuoteQuote">&#147;</div>')
+                 .append('<div class="Quoted">&mdash;&nbsp;' + $(it).attr('by') + '</div>');
+        });
+    };
+    
+    var prettyPrintEntrySeparator = function () {
+        pastEntries().append('<div class="EntrySeparator"><span class="pointer">&#x2767;</span></div>');
+        $('div.EntrySeparator span').click(function (evt) {
+            scrollJustAbove($('#Separator'));
+        });
+    };
+    
+    var makeLinksOpenInNewWindow = function () {
+        $('a').attr('target', '_blank');
+    };
+    
+    var renderPublishingDate = function (entry) {
+        return '{&nbsp;' + $(entry).attr('publishedOn').replace(/\s/g, '&nbsp;&bull;&nbsp;') + '&nbsp;}';
+    };
+    
+    var prettyPrintEntryDate = function () {
+        $('div.Entry[publishedOn]').each(function (idx, entry) {
+            $(entry).prepend('<div class="Date">' + renderPublishingDate(entry) + '</div>');
+        });
+    };
+    
+    var bindShowHideCourseDetails = function () {
+        $('div.Title, div.Details').css('cursor','pointer').click(function (evt) {
+            $('div.Details').slideToggle();
+        });
+    };
+
+    var moreThanOneEntry = function () {
+        return $('div.Entry').length > 1;
+    };
+    
+    var bindShowHidePastEntries = function () {
+        
+        var addToggleLink = function () {
+            $('div.Entry:first').after('<div id="Separator"><span class="pointer">{ <span id="Verbe">Afficher</span> les entr&eacute;es pr&eacute;c&eacute;dentes&hellip; }</span></div>');
+        };
+        
+        var bindToggleLinkToShowHidePastEntries = function () {
+            
+            var pastEntriesAreHidden = function () {
+                return pastEntries().is(':hidden');
+            };
+            var changeVerb = function (verb) {
+                $('#Verbe').fadeOut(function (evt) { $(this).html(verb).fadeIn(); });
+            };
+            var showPastEntries = function () {
+                pastEntries().fadeIn();
+                changeVerb('Masquer');
+                scrollJustAbove($('#Separator'));
+            };
+            var hidePastEntries = function () {
+                pastEntries().fadeOut();
+                changeVerb('Afficher');
+                scrollTo(0);
+            };
+            
+            $('#Separator span.pointer').click(function (evt) {
+                if (pastEntriesAreHidden()) {
+                    showPastEntries();
+                } else {
+                    hidePastEntries();
+                }
+            });
+        };
+        
+        if (moreThanOneEntry()) {
+            addToggleLink();
+            bindToggleLinkToShowHidePastEntries();
+        }
+    };
+    
+    var addTableOfContentAsPastEntry = function () {
+        
+        var generateTableOfContents = function () {
+          
+            var tocTemplate = function (lines) {
+                return '<div id="toc" class="Entry"><h2>Table des matières</h2><ul>' + lines + '</ul></div>';
+            };
+            var lineTemplate = function (title, date) {
+                return '<li><span class="TocTitle">' + title + '</span><span class="TocDate">' + date + '</span></li>';
+            };
+            var lines = function () {
+                var lines = '';
+                pastEntries().each(function (idx, entry) {
+                    lines += lineTemplate($(entry).find('h2').html(), renderPublishingDate(entry));
+                });
+                return lines;
+            };
+            
+            firstEntry().after(tocTemplate(lines()));
+        };
+        var bindTableOfContentLineClickToEntry = function () {
+            $('#toc li').click(function (evt) {
+                scrollJustAbove($('div.Entry:eq(' + ($(this).index()+2) + ')'));
+            });
+        };
+        
+        if (moreThanOneEntry()) {
+            generateTableOfContents();
+            bindTableOfContentLineClickToEntry();
+        }
+    };
+    
+    var bootstrap = function () {
+        addTableOfContentAsPastEntry();
+        hidePastEntries();
+        bindShowHidePastEntries();
+        prettyPrintEntryDate();
+        prettyPrintBlockquotes();
+        prettyPrintEntrySeparator();
+        makeLinksOpenInNewWindow();
+        bindShowHideCourseDetails();
+    };
+
+    $(function () {
+        bootstrap();
+    });
+</script>
+</head>
+
+<body>
+  
+<div class="LeftDiv">
+  <div class="Title">mgl 7361</div>
+  <div class="Details">lundi &bull; 18h &bull; pk-4665</div>
+</div>
+
+<div class="RightDiv">
+  <div class="UpperDiv">
+    <a href="http://www.getfirefox.com/">firefox</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;<a href="http://freemind.sourceforge.net/wiki/index.php/Main_Page">freemind</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com/reader/public/atom/user%2F17288818941196271031%2Fstate%2Fcom.google%2Fbroadcast">articles</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;<a href="http://twitter.com/mgl7361">twitter</a>
+  </div>
+  
+  <div class="Entry" publishedOn="24 10 10">
+    <h2>Séance n°5 &amp; 6</h2>
+    <blockquote by="Raymond Queneau">[Nous sommes des] rats qui construisent eux-mêmes le labyrinthe dont ils se proposent de sortir.</blockquote>
+    <ul>
+      <li>Systèmes distribués: fichier partagé, base de données partagée, RPC, messagerie</li>
+      <li>JMS, WS-*, REST, Ajax, Comet, Websockets</li>
+      <li><a href="http://tomayko.com/writings/rest-to-my-wife" title="How I Explained REST to My Wife">How I Explained REST to My Wife</a></li>
+      <li><a href="http://harmful.cat-v.org/software/xml/soap/simple" title="The S stands for Simple">The S stands for Simple</a></li>
+      <li><a href="http://www.infoq.com/presentations/soa-without-esb" title="InfoQ: Does My Bus Look Big in This?">InfoQ: Does My Bus Look Big in This?</a></li>
+    </ul>
+  </div>
+  
+  <div class="Entry" publishedOn="05 10 10">
+    <h2>Énoncé du premier duel</h2>
+    <p>Lorsqu'une entrée est insérée dans une base de données, une clé unique lui est attribuée. Cette clé est souvent inscrite dans une colonne nommée «id». (voir <a href="http://github.com/fxg42/mgl7361/blob/master/agenda/web/src/main/webapp/META-INF/create-schema.sql" title="agenda/web/src/main/webapp/META-INF/create-schema.sql at master from fxg42's mgl7361 - GitHub">create-schema.sql, ligne 2</a>)</p>
+    <p>Cette clé est utilisée pour retrouver l'entrée dans la base de données (voir <a href="http://github.com/fxg42/mgl7361/blob/master/agenda/persistence/src/main/groovy/ca/uqam/mgl7361/agenda/EvenementRepository.groovy" title="agenda/persistence/src/main/groovy/ca/uqam/mgl7361/agenda/EvenementRepository.groovy at master from fxg42's mgl7361 - GitHub">EvenementRepository.groovy, lignes 20 à 22 et 29</a>). Par exemple, lorsqu'on souhaite modifier une entrée, il est commun d'ajouter au formulaire de modification un champ caché qui contient la clé unique. (voir <a href="http://github.com/fxg42/mgl7361/blob/master/agenda/web/src/main/webapp/WEB-INF/evenements/_form.gsp" title="agenda/web/src/main/webapp/WEB-INF/evenements/_form.gsp at master from fxg42's mgl7361 - GitHub">_form.gsp, ligne 2</a>)</p>
+    <p>Lorsque le formulaire est envoyé à la couche métier, le coordonnateur lit la valeur du champ caché et l'utilise pour retrouver l'entrée dans la base de données. (voir <a href="http://github.com/fxg42/mgl7361/blob/master/agenda/web/src/main/webapp/evenements/edit.html" title="agenda/web/src/main/webapp/evenements/edit.html at master from fxg42's mgl7361 - GitHub">edit.html, lignes 27 et 28</a>)</p>
+    <p>Cette technique est très fréquemment utilisée. Toutefois, un détail important de la base de données est exposée à l'utilisateur: la clé unique. Un utilisateur malicieux pourrait utiliser cette information pour obtenir, modifier ou supprimer des entrées.</p>
+    <p>Pourtant, un identifiant doit nécessairement être échangé entre le fureteur du client et la couche métier&hellip; En effet, dans notre exemple, lorsque le coordonnateur reçoit de nouvelles valeurs pour une entrée, il doit connaitre l'objet original à modifier.</p>
+    <p>Votre défi est le suivant: trouver un moyen de protéger la clé unique de la base de données en ne la transmettant pas au fureteur du client tout en concervant les fonctionnalités du système.</p>
+  </div>
+
+  <div class="Entry" publishedOn="04 10 10">
+    <h2>Séance n°4</h2>
+    <blockquote by="Christopher Alexander">We are searching for some kind of harmony between two intangibles: a form which we have not yet designed and a context which we cannot properly describe.</blockquote>
+    <ul>
+      <li>Design Patterns. voir: <a href="http://github.com/fxg42/mgl7361">http://github.com/fxg42/mgl7361</a></li>
+      <li>Premier Duel&hellip;</li>
+    </ul>
+  </div>
+
+  <div class="Entry" publishedOn="17 09 10">
+    <h2>Séance n°2 &amp; 3</h2>
+    <blockquote by="Thérèse Paré.">Steak, blé d'inde, patates! Steak, blé d'inde, patates! &hellip;</blockquote>
+    <p>
+      <strong>Le local du cours est maintenant le PK-4665.</strong>
+    </p>
+    <ul>
+      <li>Architecture en couches</li>
+      <li>MVC</li>
+      <li>Présentation du projet exemple. voir: <a href="http://github.com/fxg42/mgl7361">http://github.com/fxg42/mgl7361</a></li>
+      <li>Projet de guilde</li>
+    </ul>
+  </div>
+
+  <div class="Entry" publishedOn="13 09 10">
+    <h2>Séance n°1</h2>
+    <blockquote by="Hérodote">Le début ne laisse pas présager la fin.</blockquote>
+    <ul>
+      <li>Présentation du cours</li>
+      <li><a href="plan.pdf">Lecture du plan de cours</a></li>
+      <li>Création des guildes</li>
+    </ul>
+  </div>
+  
+  <div class="LowerDiv">
+    Copyright &bull; 2009-2010 &bull; <a href="mailto:guillemette[DOT]francois-xavier[AT]uqam[DOT]ca">François-Xavier Guillemette</a>
+  </div>
+</div>
+  
+</body>
+</html>
