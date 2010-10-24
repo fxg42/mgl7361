@@ -9,12 +9,26 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
+  <listener>
     <listener-class>ca.uqam.mgl7361.SessionLoaderListener</listener-class>
   </listener>
+
+  <servlet>
+    <servlet-name>jersey-spring-servlet</servlet-name>
+    <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jersey-spring-servlet</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <servlet-name>Groovy</servlet-name>
     <servlet-class>groovy.servlet.GroovyServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>Groovy</servlet-name>
