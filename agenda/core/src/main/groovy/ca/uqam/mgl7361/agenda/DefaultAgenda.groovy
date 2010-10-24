@@ -1,6 +1,6 @@
 package ca.uqam.mgl7361.agenda
 
-class DefaultAgenda implements AgendaService {
+class DefaultAgenda implements AgendaService, Serializable {
     
     def repository
     

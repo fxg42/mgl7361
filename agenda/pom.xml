@@ -101,7 +101,6 @@
     <module>api</module>
     <module>core</module>
     <module>persistence</module>
-    <module>services</module>
     <module>web</module>
   </modules>
   
