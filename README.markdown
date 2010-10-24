@@ -34,4 +34,3 @@ Description _(très)_ sommaire
 - Le module _core_ contient l'implémentation de la couche métier.
 - Le module _persistence_ contient les classes qui sont responsables de l'accès à la base de données ainsi que la sérialisation/désérialisation des objets.
 - Le module _web_ contient les contrôleurs et les gabarits des pages web.
-- Le module _services_ contient certaines classes utilitaires.
